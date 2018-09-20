@@ -9,20 +9,27 @@ module.exports = function (sequelize, DataTypes) {
     },
     speed: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      defaultValue: 0
     },
     power: {
       type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    img: {
+      type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: [1]
+      }
     }
   });
 
-  Dino.associate = function (models) {
-    Dino.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
-      }
-    })
-  }
+  // Dino.associate = function (models) {
+  //   Dino.belongsTo(models.User, {
+  //     foreignKey: {
+  //       allowNull: false
+  //     }
+  //   })
+  // }
   return Dino;
 };

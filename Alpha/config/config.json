@@ -1,10 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "exampledb",
+    "password": "root",
+    "database": "dino_db",
     "host": "localhost",
-    "dialect": "mysql"
+    "port": 8889,
+    "dialect": "mysql",
+    "dialectOptions": {
+      "socketPath": "/Applications/MAMP/tmp/mysql/mysql.sock"
+    }
   },
   "test": {
     "username": "root",

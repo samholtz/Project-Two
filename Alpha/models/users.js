@@ -9,12 +9,12 @@ module.exports = function (sequelize, DataTypes) {
     },
     dinoCoins: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      defaultValue: 0
     }
   });
 
-  User.associate = function (models) {
-    User.hasMany(models.Dino);
-  };
-  return Dino;
+  // User.associate = function (models) {
+  //   User.hasMany(models.Dino);
+  // };
+  return User;
 };

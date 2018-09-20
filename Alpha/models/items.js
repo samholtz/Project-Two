@@ -7,12 +7,20 @@ module.exports = function (sequelize, DataTypes) {
         len: [1]
       }
     },
-    type: {
+    statType: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
       }
+    },
+    statValue: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    cost: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
     }
   });
 
