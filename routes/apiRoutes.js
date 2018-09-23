@@ -2,8 +2,10 @@ var db = require("../models");
 
 module.exports = function (app) {
   // Get all store
+  console.log(db);
+
   app.get("/api/store", function (req, res) {
-    db.item.findAll({}).then(function (dbitems) {
+    db.Item.findAll({}).then(function (dbitems) {
       res.json(dbitems);
     });
   });
