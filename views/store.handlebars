@@ -1,12 +1,31 @@
 <div id="page-content-wrapper">
     <div class="container-fluid">
         <a href="#menu-toggle" class="btn btn-dark btn-sm" id="menu-toggle">Menu</a><br><br>
-        <h1>store</h1><br>
-        <p>buy powerups</p><br>
-        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller
-            screens, and will appear non-collapsed on larger screens. When toggled using the button below, the
-            menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+        <h1>Store</h1><br>
+        <p>The void must be filled with objects.</p>
+        <p>Buy things to temporarily suppress your existensial dread!</p><br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">statType</th>
+                    <th scope="col">statValue</th>
+                    <th scope="col">Cost</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each result}}
+                <tr>
+                    <td> {{name}}</td>
+                    <td>{{statType}}</td>
+                    <td>{{statValue}}</td>
+                    <td>{{cost}}</td>
+                    <td><button type="button" class="btn btn-sm btn-dark">Buy!</button></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
     </div>
 </div>
 <!-- Bootstrap core JavaScript -->
