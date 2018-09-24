@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  var User = sequelize.define("user", {
+  var User = sequelize.define("User", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -13,8 +13,8 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
-  // User.associate = function (models) {
-  //   User.hasMany(models.Dino);
-  // };
+  User.associate = function (models) {
+    User.hasMany(models.Dino);
+  };
   return User;
 };

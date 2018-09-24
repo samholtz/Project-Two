@@ -10,6 +10,18 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/api/dinos", function (req, res) {
+    db.Dino.findAll({ include: [db.User] }).then(function (dbitems) {
+      res.json(dbitems);
+    });
+  });
+
+  app.get("/api/users", function (req, res) {
+    db.User.findAll({ include: [db.Dino] }).then(function (dbitems) {
+      res.json(dbitems);
+    });
+  });
+
   // Create a new Item
   // need to update this
   app.post("/api/Items", function (req, res) {
