@@ -9,7 +9,9 @@ module.exports = function (app) {
 
   // Route to the store page
   app.get("/store", function (req, res) {
-    res.render("store");
+    db.Item.findAll({}).then(function (result) {
+      return res.render("store", { result: result });
+    });
   });
 
   // race route loads race.html
