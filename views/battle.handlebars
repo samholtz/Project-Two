@@ -1,31 +1,32 @@
 <div id="page-content-wrapper">
     <div class="container-fluid">
-        <a href="#menu-toggle" class="btn btn-dark btn-sm" id="menu-toggle">Menu</a><br><br>
+        <a href="#menu-toggle" class="btn btn-outline-dark btn-sm" id="menu-toggle">Menu</a><br><br>
         <h1>battle</h1><br>
         <p>if you lose, you die. if you win, you still die.</p><br>
-        <p>
-            <button onclick="myChoice()">Click Me</button>
-        </p>
+        <div id="game">
+            <p>
+                <button type="button" class="btn btn-outline-dark btn-sm" onclick="myChoice()">game.exe</button>
+            </p>
+            <div id="myContainer">
 
-        <div id="myContainer">
+                <div id="myAnimation"></div>
 
-            <div id="myAnimation"></div>
+                <div id="goal-box-4">
+                    <div id="goal-box-3">
+                        <div id="goal-box-2">
+                            <div id="goal-box-1">
+                                <div id="goal-box-0">
 
-            <div id="goal-box-4">
-                <div id="goal-box-3">
-                    <div id="goal-box-2">
-                        <div id="goal-box-1">
-                            <div id="goal-box-0">
-
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
+            <div id="message-box">
 
-        </div>
-        <div id="message-box">
-
+            </div>
         </div>
     </div>
 </div>
@@ -55,23 +56,28 @@
     function decider(position) {
         var color;
         var message;
+        var points;
         color = "black";
         message = "not great bob!";
         if (position > 70 && position < 310) {
             color = "orange";
             message = "OK!";
+            points = 2;
         }
         if (position > 130 && position < 250) {
             color = "blue";
             message = "GOOD!";
+            points = 5;
         }
         if (position > 160 && position < 220) {
             color = "green";
             message = "GREAT!";
+            points = 10;
         }
         if (position > 175 && position < 205) {
             color = "white";
             message = "PERFECT!";
+            points = 25;
         }
         $("#myAnimation").css("background-color", color);
         $("#message-box").text(message);
