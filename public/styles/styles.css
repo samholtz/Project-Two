@@ -6,5 +6,6 @@
 }
 #displayCurrency {
   float: right;
-  margin: 21px;
+  margin:21px;
+  padding-right: 27px;
 }
