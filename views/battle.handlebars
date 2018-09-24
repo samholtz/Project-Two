@@ -1,11 +1,11 @@
 <div id="page-content-wrapper">
     <div class="container-fluid">
         <a href="#menu-toggle" class="btn btn-outline-dark btn-sm" id="menu-toggle">Menu</a><br><br>
-        <h1>battle</h1><br>
-        <p>if you lose, you die. if you win, you still die.</p><br>
+        <h1>money farm</h1><br>
+        <p>it's like mining bitcoin, but not.</p><br>
         <div id="game">
             <p>
-                <button type="button" class="btn btn-outline-dark btn-sm" onclick="myChoice()">game.exe</button>
+                <button type="button" class="btn btn-outline-dark btn-sm" onclick="myChoice()">Click Me!</button>
             </p>
             <div id="myContainer">
 
@@ -40,25 +40,52 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+
+    var points;
     var id;
     var pos = 0;
+    $("#myContainer").css("display", "block");
+    myMoveRedux();
     function myChoice() {
-        $("#myContainer").css("display", "block");
+        //$("#myContainer").css("display", "block");
         if (!id) myMoveRedux();
         else {
             clearInterval(id);
             id = false;
             console.log(pos);
             decider(pos);
+            console.log(points);
+            event.preventDefault();
+
+            var current = $("#currency").text();
+
+            console.log(current)
+
+            current = parseInt(current);
+
+            console.log(current)
+
+            var newCoinAmount = current + points;
+
+            var body = { dinoCoins: newCoinAmount };
+
+            $.ajax({
+                url: "/api/users",
+                type: 'PUT',
+                data: body,
+            })
+                .then(function (data) {
+                    location.reload();
+                });
         }
     }
 
     function decider(position) {
         var color;
         var message;
-        var points;
         color = "black";
         message = "not great bob!";
+        points = 0;
         if (position > 70 && position < 310) {
             color = "orange";
             message = "OK!";
@@ -83,6 +110,7 @@
         $("#message-box").text(message);
     }
 
+
     function myMoveRedux() {
         var elem = document.getElementById("myAnimation");
 
@@ -103,4 +131,5 @@
 
         }
     }
+
 </script>
