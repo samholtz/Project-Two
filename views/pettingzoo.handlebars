@@ -27,7 +27,7 @@
             <td> <img class="pic" src="/assets/images/raptor.jpg" width="150px" height="150px" alt=" Velociraptor ">
             </td>
             <td>£100</td>
-            <td><button type="button" class="btn btn-sm btn-dark">Select New Dino</button></td>
+            <td><button data-name="raptor" type="button" class="btn btn-sm btn-dark">Select New Dino</button></td>
         </tr>
         <tr>
             <th scope="row">2</th>
@@ -35,7 +35,7 @@
             <td> <img class="pic" src="/assets/images/trex.jpeg" width="150px" height="150px" alt=" Tyrannosaurus Rex ">
             </td>
             <td>£100</td>
-            <td><button type="button" class="btn btn-sm btn-dark">Select New Dino</button></td>
+            <td><button data-name="trex" type="button" class="btn btn-sm btn-dark">Select New Dino</button></td>
         </tr>
         <tr>
             <th scope="row">3</th>
@@ -43,7 +43,7 @@
             <td> <img class="pic" src="/assets/images/goodptero.jpg" width="150px" height="150px" alt=" Pterodactyl ">
             </td>
             <td>£100</td>
-            <td><button type="button" class="btn btn-sm btn-dark">Select New Dino</button></td>
+            <td><button data-name="pterodactyl" type="button" class="btn btn-sm btn-dark">Select New Dino</button></td>
         </tr>
     </tbody>
 </table>
@@ -59,4 +59,17 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+</script>
+
+{{!-- create dino call --}}
+{{!-- add the speed and power and images for all the dinos, and then make corresponding with the $.post route --}}
+<script>
+    $("button").on("click", function () {
+        var name = $(this).data(name)
+        $.post("/api/Dinos", { name: name, speed: Dino.speed.defaultValue, power: "5", img: "h" }).then(function () {
+            console.log("posted data")
+        })
+
+    })
+
 </script>

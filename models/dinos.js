@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  var Dino = sequelize.define("dino", {
+  var Dino = sequelize.define("Dino", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,

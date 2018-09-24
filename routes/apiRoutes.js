@@ -23,4 +23,13 @@ module.exports = function (app) {
       res.json(dbItem);
     });
   });
+
+  // create dino
+  app.post("/api/Dinos", function (req, res) {
+    console.log(req.body)
+    db.Dino.create(req.body).then(function (dbDino) {
+      res.json(dbDino);
+    });
+  });
+
 };
