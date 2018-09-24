@@ -9,11 +9,11 @@ module.exports = function (sequelize, DataTypes) {
     },
     speed: {
       type: DataTypes.INTEGER,
-      defaultValue: 0
+      defaultValue: 5
     },
     power: {
       type: DataTypes.INTEGER,
-      defaultValue: 0
+      defaultValue: 5
     },
     img: {
       type: DataTypes.STRING,
@@ -24,12 +24,12 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
-  // Dino.associate = function (models) {
-  //   Dino.belongsTo(models.User, {
-  //     foreignKey: {
-  //       allowNull: false
-  //     }
-  //   })
-  // }
+  Dino.associate = function (models) {
+    Dino.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    })
+  }
   return Dino;
 };

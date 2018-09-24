@@ -2,8 +2,22 @@ var db = require("../models");
 
 module.exports = function (app) {
   // Get all store
+  console.log(db);
+
   app.get("/api/store", function (req, res) {
-    db.item.findAll({}).then(function (dbitems) {
+    db.Item.findAll({}).then(function (dbitems) {
+      res.json(dbitems);
+    });
+  });
+
+  app.get("/api/dinos", function (req, res) {
+    db.Dino.findAll({ include: [db.User] }).then(function (dbitems) {
+      res.json(dbitems);
+    });
+  });
+
+  app.get("/api/users", function (req, res) {
+    db.User.findAll({ include: [db.Dino] }).then(function (dbitems) {
       res.json(dbitems);
     });
   });
