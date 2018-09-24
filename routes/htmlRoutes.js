@@ -10,7 +10,7 @@ module.exports = function (app) {
   // Route to the store page
   app.get("/store", function (req, res) {
     db.Item.findAll({}).then(function (result) {
-      return res.render("store", { result: result });
+      res.render("store", { result: result });
     });
   });
 
