@@ -1,5 +1,5 @@
 <div id="page-content-wrapper">
-    <div class="container-fluid">
+    <div class="container-fluid col-10 mx-auto">
         <a href="#menu-toggle" class="btn btn-outline-dark btn-sm" id="menu-toggle">Menu</a><br><br>
         <h1>money farm</h1><br>
         <p>it's like mining bitcoin, but not.</p><br>
@@ -88,22 +88,22 @@
         points = 0;
         if (position > 70 && position < 310) {
             color = "orange";
-            message = "OK!";
+            message = "+2!";
             points = 2;
         }
         if (position > 130 && position < 250) {
             color = "blue";
-            message = "GOOD!";
+            message = "+5!";
             points = 5;
         }
         if (position > 160 && position < 220) {
             color = "green";
-            message = "GREAT!";
+            message = "+10!";
             points = 10;
         }
         if (position > 175 && position < 205) {
             color = "white";
-            message = "PERFECT!";
+            message = "+25!";
             points = 25;
         }
         $("#myAnimation").css("background-color", color);
