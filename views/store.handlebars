@@ -4,6 +4,8 @@
         <h1>Store</h1><br>
         <p>The void must be filled with objects.</p>
         <p>Buy things to temporarily suppress your existensial dread!</p><br>
+
+        <div>YOU HAVE <span id="currentCoins">{{user.dinoCoins}}</span> DINO COINS</div>
         <table class="table">
             <thead>
                 <tr>
@@ -15,13 +17,14 @@
                 </tr>
             </thead>
             <tbody>
-                {{#each result}}
+                {{#each items}}
                 <tr>
                     <td> {{name}}</td>
                     <td>{{statType}}</td>
                     <td>{{statValue}}</td>
-                    <td>{{cost}}</td>
-                    <td><button type="button" class="btn btn-sm btn-dark" id="buy">Buy!</button></td>
+                    <td id="cost">{{cost}}</td>
+                    <td><button type="button" class="btn btn-sm btn-dark buy" data-cost="{{cost}}">Buy!</button></td>
+
                 </tr>
                 {{/each}}
             </tbody>
@@ -38,4 +41,20 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+
+    $(".buy").click(function (event) {
+        event.preventDefault();
+        var newCoinAmount = $("#currentCoins").text() - $(this).data("cost");
+
+        var body = { dinoCoins: newCoinAmount };
+
+        $.ajax({
+            url: "/api/users",
+            type: 'PUT',
+            data: body,
+        }).then(function (data) {
+            location.reload();
+        });
+
+    })
 </script>
