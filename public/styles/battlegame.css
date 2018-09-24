@@ -1,0 +1,57 @@
+#myContainer {
+    width: 400px;
+    height: 50px;
+    position: relative;
+    background: rgba(126, 171, 185, 0.692);
+    display: none;
+}
+
+#myAnimation {
+    width: 5px;
+    height: 70px;
+    position: absolute;
+    background-color: black;
+    top: -10px;
+}
+
+#goal-box-0 {
+    width: 30px;
+    height: 50px;
+    background-color: rgb(207, 9, 194);
+    z-index: 0;
+    margin: auto;
+}
+
+#goal-box-1 {
+    width: 60px;
+    height: 50px;
+    /* position: absolute; */
+    background-color: rgb(202, 86, 196);
+    z-index: -1;
+    /* left: 160px; */
+    margin: auto;
+}
+
+#goal-box-2 {
+    width: 120px;
+    height: 50px;
+    background-color: rgb(206, 139, 202);
+    z-index: -2;
+    margin: auto;
+}
+
+#goal-box-3 {
+    width: 240px;
+    height: 50px;
+    background-color: rgb(207, 171, 205);
+    z-index: -3;
+    margin: auto;
+}
+
+#goal-box-4 {
+    width: 400px;
+    height: 50px;
+    background-color: rgb(206, 198, 205);
+    z-index: -4;
+    margin: auto;
+}

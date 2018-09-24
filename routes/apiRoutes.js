@@ -22,6 +22,18 @@ module.exports = function (app) {
     });
   });
 
+  app.put("/api/users", function (req, res) {
+    db.User.update(
+      req.body,
+      {
+        where: {
+          id: 4
+        }
+      }).then(function (dbPost) {
+        res.end();
+      });
+  });
+
   // Create a new Item
   // need to update this
   app.post("/api/Items", function (req, res) {

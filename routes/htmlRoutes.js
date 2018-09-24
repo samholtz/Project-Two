@@ -9,10 +9,16 @@ module.exports = function (app) {
 
   // Route to the store page
   app.get("/store", function (req, res) {
-    db.Item.findAll({}).then(function (result) {
-      return res.render("store", { result: result });
-    });
+    db.Item.findAll({})
+      .then(function (item_result) {
+        db.User.findOne({ where: { id: 4 } })
+          .then(function (user_result) {
+            return res.render("store", { items: item_result, user: user_result });
+          });
+      });
   });
+
+
 
   // race route loads race.html
   app.get("/race", function (req, res) {

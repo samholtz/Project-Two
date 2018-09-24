@@ -1,3 +1,10 @@
 .list-group-item {
   line-height: 2.5;
 }
+#menu-toggle {
+  float: right;
+}
+#displayCurrency {
+  float: right;
+  margin: 22px;
+}
