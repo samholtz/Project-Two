@@ -27,7 +27,8 @@
             </td>
             <td>£100</td>
             <td><input class="form-control" id="raptor" type="text" placeholder="Chance the Raptor"></td>
-            <td><button data-name="#raptor" type="button" class="btn btn-sm btn-dark">Buy New Dino</button></td>
+            <td><button data-name="#raptor" type="button" class="btn btn-sm btn-dark" data-image="http://www.messagetoeagle.com/wp-content/uploads/2017/07/Tyrannosaurusrex11.jpg">Buy
+                    New Dino</button></td>
         </tr>
         <tr>
             <th scope="row">2</th>
@@ -36,7 +37,8 @@
             </td>
             <td>£100</td>
             <td><input class="form-control" id="trex" type="text" placeholder="Rex Ruthor"></td>
-            <td><button data-name="#trex" type="button" class="btn btn-sm btn-dark">Buy New Dino</button></td>
+            <td><button data-name="#trex" type="button" class="btn btn-sm btn-dark" data-image="https://ae01.alicdn.com/kf/HTB1TMdwByCYBuNkSnaVq6AMsVXaF/Velociraptor-Blue-Dinosaur-Toy-Raptor-Model-Classic-Toys-For-Boys-Children-Movable-Mouth.jpg_640x640.jpg">Buy
+                    New Dino</button></td>
         </tr>
         <tr>
             <th scope="row">3</th>
@@ -45,7 +47,8 @@
             </td>
             <td>£100</td>
             <td><input class="form-control" id="pterodactyl" type="text" placeholder="Pterry Crews"></td>
-            <td><button data-name="#pterodactyl" type="button" class="btn btn-sm btn-dark">Buy New Dino</button></td>
+            <td><button data-name="#pterodactyl" type="button" class="btn btn-sm btn-dark" data-image="http://www.dinocreta.com/wp-content/uploads/2013/11/pterodactyl.jpg">Buy
+                    New Dino</button></td>
         </tr>
     </tbody>
 </table>
@@ -67,7 +70,8 @@
     $("button").on("click", function () {
         var find = $(this).data("name");
         var name = $(find).val().trim();
-        $.post("/api/Dinos", { name: name, img: "h", UserId: 4 }).then(function () {
+        var img = $(this).data("image")
+        $.post("/api/Dinos", { name: name, img: img, UserId: 4 }).then(function () {
             console.log(find, name);
         })
     })
