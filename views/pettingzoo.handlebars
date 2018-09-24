@@ -1,12 +1,10 @@
 <div id="page-content-wrapper">
     <div class="container-fluid">
-        <a href="#menu-toggle" class="btn btn-outline-dark btn-sm" id="menu-toggle">Menu</a><br><br>
-        <h1>petting zoo</h1><br>
+        <a href="#menu-toggle" class="btn btn-dark btn-sm" id="menu-toggle">Menu</a><br><br>
+        <h1>Petting Zoo</h1><br>
         <p>pet that dino!</p><br>
-        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller
-            screens, and will appear non-collapsed on larger screens. When toggled using the button below, the
-            menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+        <p>Select which dinosaur you would like to purchase. Please think of a good name and have monies for purchase.
+            Enjoy your new dinosaur!</p>
     </div>
 </div>
 
@@ -17,6 +15,7 @@
             <th scope="col">Dinosaur</th>
             <th scope="col">Full Frontal</th>
             <th scope="col">Cost:</th>
+            <th scope="col">Name your Dino:</th>
             <th scope="col">¯\_(ツ)_/¯</th>
         </tr>
     </thead>
@@ -27,7 +26,8 @@
             <td> <img class="pic" src="/assets/images/raptor.jpg" width="150px" height="150px" alt=" Velociraptor ">
             </td>
             <td>£100</td>
-            <td><button type="button" class="btn btn-sm btn-dark">Select New Dino</button></td>
+            <td><input class="form-control" id="raptor" type="text" placeholder="Chance the Raptor"></td>
+            <td><button data-name="#raptor" type="button" class="btn btn-sm btn-dark">Buy New Dino</button></td>
         </tr>
         <tr>
             <th scope="row">2</th>
@@ -35,7 +35,8 @@
             <td> <img class="pic" src="/assets/images/trex.jpeg" width="150px" height="150px" alt=" Tyrannosaurus Rex ">
             </td>
             <td>£100</td>
-            <td><button type="button" class="btn btn-sm btn-dark">Select New Dino</button></td>
+            <td><input class="form-control" id="trex" type="text" placeholder="Rex Ruthor"></td>
+            <td><button data-name="#trex" type="button" class="btn btn-sm btn-dark">Buy New Dino</button></td>
         </tr>
         <tr>
             <th scope="row">3</th>
@@ -43,11 +44,11 @@
             <td> <img class="pic" src="/assets/images/goodptero.jpg" width="150px" height="150px" alt=" Pterodactyl ">
             </td>
             <td>£100</td>
-            <td><button type="button" class="btn btn-sm btn-dark">Select New Dino</button></td>
+            <td><input class="form-control" id="pterodactyl" type="text" placeholder="Pterry Crews"></td>
+            <td><button data-name="#pterodactyl" type="button" class="btn btn-sm btn-dark">Buy New Dino</button></td>
         </tr>
     </tbody>
 </table>
-</div>
 </div>
 <!-- Bootstrap core JavaScript -->
 <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8='
@@ -59,4 +60,15 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+</script>
+
+{{!-- create dino call --}}
+<script>
+    $("button").on("click", function () {
+        var find = $(this).data("name");
+        var name = $(find).val().trim();
+        $.post("/api/Dinos", { name: name, img: "h", UserId: 4 }).then(function () {
+            console.log(find, name);
+        })
+    })
 </script>
