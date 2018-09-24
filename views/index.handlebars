@@ -1,16 +1,36 @@
 <div id="page-content-wrapper">
   <div class="container-fluid">
     <a href="#menu-toggle" class="btn btn-dark btn-sm" id="menu-toggle">Menu</a><br><br>
-    <h1>Welcome!</h1><br>
-    <p>this is where the user sees his/her dinos (or lack thereof).</p><br>
-    <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller
-      screens, and will appear non-collapsed on larger screens. When toggled using the button below, the
-      menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-  </div>
-</div>
-<!-- /#page-content-wrapper -->
+    <div class="container">
+      <h2>Cards Columns</h2>
+      <p>The .card-columns class creates a masonry-like grid of cards. The layout will automatically adjust as you
+        insert
+        more cards.</p>
+      <p><strong>Note:</strong> The cards are displayed vertically on small screens (less than 576px):</p>
+      <div class="card-deck">
+        <div class="card">
+          <div class="card-body">
+            {{#each result}}
+            <div id="space" class="d-inline-flex p-2" "mr-2">
 
+              <div class="card" style="width: 18rem;">
+                <div class="card-body" "d-inline-flex p-2">
+                  <ul>
+                    <img class="card-img-top" src={{img}} alt="Card image cap">
+                    <h5 class="card-text">Dino Name: {{name}} </h5>
+                    <p class="card-text">Speed: {{speed}}</p>
+                    <p class="card-text">Power: {{power}}</p>
+                    <a href="#" class="btn btn-primary">Click to Use</a>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- /#wrapper -->
 
