@@ -4,10 +4,14 @@ var path = require("path");
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
-    db.Dino.findAll({ where: { UserId: 4 } }).then(function (result) {
-      return res.render("index", { result: result });
-      //res.json(result);
+    // db.Dino.findAll({ where: { UserId: 4 }, include: [db.User] }).then(function (result) {
+    //   return res.render("index", { result: result });
+    //   //res.json(result);
+    // });
+    db.User.findOne({ where: { id: 4 }, include: [db.Dino] }).then(function (user_result) {
+      return res.render("index", { user: user_result });
     });
+
   });
 
   // Route to the store page
