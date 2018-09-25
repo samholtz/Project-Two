@@ -13,7 +13,7 @@ module.exports = function (app) {
   // Route to the store page
   app.get("/store", function (req, res) {
     db.Item.findAll({}).then(function (item_result) {
-      db.User.findOne({ where: { id: 4 } }).then(function (user_result) {
+      db.User.findOne({ where: { id: 4 }, include: [db.Dino] }).then(function (user_result) {
         return res.render("store", { items: item_result, user: user_result });
       });
     });
