@@ -9,3 +9,7 @@
   margin:21px;
   padding-right: 27px;
 }
+
+#feed {
+  display: none;
+}

@@ -34,6 +34,18 @@ module.exports = function (app) {
       });
   });
 
+  app.put("/api/dinos", function (req, res) {
+    db.Dino.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      }).then(function (dbPost) {
+        res.end();
+      });
+  });
+
   // Create a new Item
   // need to update this
   app.post("/api/Items", function (req, res) {
