@@ -78,9 +78,9 @@
                 type: 'PUT',
                 data: body,
             })
-                .then(function (data) {
+                .then(setInterval(function (data) {
                     location.reload();
-                });
+                }, 1800));
         }
     }
 
