@@ -1,14 +1,17 @@
 .list-group-item {
   line-height: 2.5;
 }
+#displayCurrency {
+  float: right;
+  padding-right: 20px;
+}
 #menu-toggle {
   float: right;
 }
-#displayCurrency {
-  float: right;
-  margin:21px;
-  padding-right: 27px;
-}
 #pain {
   font-size: 8pt;
+}
+#message-box {
+  font-size: 18pt;
+  margin-top: 10px;
 }
