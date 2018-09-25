@@ -1,14 +1,18 @@
 <div id="page-content-wrapper">
   <div class="container-fluid col-10 mx-auto">
 
-    <a href="#menu-toggle" class="btn btn-outline-dark btn-sm" id="menu-toggle">Menu</a><br><br>
+    <a href="#menu-toggle" class="btn btn-outline-dark btn-sm" id="menu-toggle">Menu</a>
     <div class="container">
-      <h1>Welcome to the Jurassic Perk!</h1><br>
-      <p>Your dinosaurs will appear below once you purchase the disosaur of your choice. Visit the Petting Zoo to get
-        started! Need some money? Visit the Money Farm or Play a game to collect Dino Bucks. Good Luck!</p><br>
+      <h4 id="displayCurrency">Ƀ:
+        <trim id="currency">{{user.dinoCoins}}</trim>
+      </h4><br><br>
+      <h1>welcome to the jurassic perk.</h1><br>
+      <p>your dinos will appear below once you purchase the dino of your choice. visit the petting zoo to get
+        started. need some money (don't we all)? visit the money farm (bitcoin mine), or play a game to collect dino
+        coin. which by the way is an ICO right now for those interested. good luck.</p><br>
 
-      <div class="card-deck">
-        <div class="card" style="width: 18rem;">
+      <div class="card-deck mx-auto">
+        <div class="card">
           <div class="card-body">
             {{#each result}}
             <div id="space" class="d-inline-flex p-2" "mr-2">

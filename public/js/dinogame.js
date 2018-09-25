@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 // extract from chromium source code by @liuwayong
 (function () {
-    'use strict';
+    "use strict";
     /**
      * T-Rex runner.
      * @param {string} outerContainerId Outer containing element id.
@@ -21,7 +21,7 @@
         this.outerContainerEl = document.querySelector(outerContainerId);
         this.containerEl = null;
         this.snackbarEl = null;
-        this.detailsButton = this.outerContainerEl.querySelector('#details-button');
+        this.detailsButton = this.outerContainerEl.querySelector("#details-button");
 
         this.config = opt_config || Runner.config;
 
@@ -71,7 +71,7 @@
             this.loadImages();
         }
     }
-    window['Runner'] = Runner;
+    window["Runner"] = Runner;
 
 
     /**
@@ -96,7 +96,7 @@
     var IS_MOBILE = /Android/.test(window.navigator.userAgent) || IS_IOS;
 
     /** @const */
-    var IS_TOUCH_ENABLED = 'ontouchstart' in window;
+    var IS_TOUCH_ENABLED = "ontouchstart" in window;
 
     /**
      * Default game configuration.
@@ -121,7 +121,7 @@
         MAX_SPEED: 13,
         MIN_JUMP_HEIGHT: 35,
         MOBILE_SPEED_COEFFICIENT: 1.2,
-        RESOURCE_TEMPLATE_ID: 'audio-resources',
+        RESOURCE_TEMPLATE_ID: "audio-resources",
         SPEED: 6,
         SPEED_DROP_COEFFICIENT: 3
     };
@@ -142,14 +142,14 @@
      * @enum {string}
      */
     Runner.classes = {
-        CANVAS: 'runner-canvas',
-        CONTAINER: 'runner-container',
-        CRASHED: 'crashed',
-        ICON: 'icon-offline',
-        INVERTED: 'inverted',
-        SNACKBAR: 'snackbar',
-        SNACKBAR_SHOW: 'snackbar-show',
-        TOUCH_CONTROLLER: 'controller'
+        CANVAS: "runner-canvas",
+        CONTAINER: "runner-container",
+        CRASHED: "crashed",
+        ICON: "icon-offline",
+        INVERTED: "inverted",
+        SNACKBAR: "snackbar",
+        SNACKBAR_SHOW: "snackbar-show",
+        TOUCH_CONTROLLER: "controller"
     };
 
 
@@ -190,9 +190,9 @@
      * @enum {string}
      */
     Runner.sounds = {
-        BUTTON_PRESS: 'offline-sound-press',
-        HIT: 'offline-sound-hit',
-        SCORE: 'offline-sound-reached'
+        BUTTON_PRESS: "offline-sound-press",
+        HIT: "offline-sound-hit",
+        SCORE: "offline-sound-reached"
     };
 
 
@@ -201,9 +201,9 @@
      * @enum {Object}
      */
     Runner.keycodes = {
-        JUMP: { '38': 1, '32': 1 },  // Up, spacebar
-        DUCK: { '40': 1 },  // Down
-        RESTART: { '13': 1 }  // Enter
+        JUMP: { "38": 1, "32": 1 },  // Up, spacebar
+        DUCK: { "40": 1 },  // Down
+        RESTART: { "13": 1 }  // Enter
     };
 
 
@@ -212,19 +212,19 @@
      * @enum {string}
      */
     Runner.events = {
-        ANIM_END: 'webkitAnimationEnd',
-        CLICK: 'click',
-        KEYDOWN: 'keydown',
-        KEYUP: 'keyup',
-        MOUSEDOWN: 'mousedown',
-        MOUSEUP: 'mouseup',
-        RESIZE: 'resize',
-        TOUCHEND: 'touchend',
-        TOUCHSTART: 'touchstart',
-        VISIBILITY: 'visibilitychange',
-        BLUR: 'blur',
-        FOCUS: 'focus',
-        LOAD: 'load'
+        ANIM_END: "webkitAnimationEnd",
+        CLICK: "click",
+        KEYDOWN: "keydown",
+        KEYUP: "keyup",
+        MOUSEDOWN: "mousedown",
+        MOUSEUP: "mouseup",
+        RESIZE: "resize",
+        TOUCHEND: "touchend",
+        TOUCHSTART: "touchstart",
+        VISIBILITY: "visibilitychange",
+        BLUR: "blur",
+        FOCUS: "focus",
+        LOAD: "load"
     };
 
 
@@ -242,16 +242,16 @@
          * For disabled instances, set up a snackbar with the disabled message.
          */
         setupDisabledRunner: function () {
-            this.containerEl = document.createElement('div');
+            this.containerEl = document.createElement("div");
             this.containerEl.className = Runner.classes.SNACKBAR;
-            this.containerEl.textContent = loadTimeData.getValue('disabledEasterEgg');
+            this.containerEl.textContent = loadTimeData.getValue("disabledEasterEgg");
             this.outerContainerEl.appendChild(this.containerEl);
 
             // Show notification when the activation key is pressed.
             document.addEventListener(Runner.events.KEYDOWN, function (e) {
                 if (Runner.keycodes.JUMP[e.keyCode]) {
                     this.containerEl.classList.add(Runner.classes.SNACKBAR_SHOW);
-                    document.querySelector('.icon').classList.add('icon-disabled');
+                    document.querySelector(".icon").classList.add("icon-disabled");
                 }
             }.bind(this));
         },
@@ -266,15 +266,15 @@
                 this.config[setting] = value;
 
                 switch (setting) {
-                    case 'GRAVITY':
-                    case 'MIN_JUMP_HEIGHT':
-                    case 'SPEED_DROP_COEFFICIENT':
+                    case "GRAVITY":
+                    case "MIN_JUMP_HEIGHT":
+                    case "SPEED_DROP_COEFFICIENT":
                         this.tRex.config[setting] = value;
                         break;
-                    case 'INITIAL_JUMP_VELOCITY':
+                    case "INITIAL_JUMP_VELOCITY":
                         this.tRex.setJumpVelocity(value);
                         break;
-                    case 'SPEED':
+                    case "SPEED":
                         this.setSpeed(value);
                         break;
                 }
@@ -287,10 +287,10 @@
          */
         loadImages: function () {
             if (IS_HIDPI) {
-                Runner.imageSprite = document.getElementById('offline-resources-2x');
+                Runner.imageSprite = document.getElementById("offline-resources-2x");
                 this.spriteDef = Runner.spriteDefinition.HDPI;
             } else {
-                Runner.imageSprite = document.getElementById('offline-resources-1x');
+                Runner.imageSprite = document.getElementById("offline-resources-1x");
                 this.spriteDef = Runner.spriteDefinition.LDPI;
             }
 
@@ -316,7 +316,7 @@
                 for (var sound in Runner.sounds) {
                     var soundSrc =
                         resourceTemplate.getElementById(Runner.sounds[sound]).src;
-                    soundSrc = soundSrc.substr(soundSrc.indexOf(',') + 1);
+                    soundSrc = soundSrc.substr(soundSrc.indexOf(",") + 1);
                     var buffer = decodeBase64ToArrayBuffer(soundSrc);
 
                     // Async, so no guarantee of order in array.
@@ -349,21 +349,21 @@
          */
         init: function () {
             // Hide the static icon.
-            document.querySelector('.' + Runner.classes.ICON).style.visibility =
-                'hidden';
+            document.querySelector("." + Runner.classes.ICON).style.visibility =
+                "hidden";
 
             this.adjustDimensions();
             this.setSpeed();
 
-            this.containerEl = document.createElement('div');
+            this.containerEl = document.createElement("div");
             this.containerEl.className = Runner.classes.CONTAINER;
 
             // Player canvas container.
             this.canvas = createCanvas(this.containerEl, this.dimensions.WIDTH,
                 this.dimensions.HEIGHT, Runner.classes.PLAYER);
 
-            this.canvasCtx = this.canvas.getContext('2d');
-            this.canvasCtx.fillStyle = '#f7f7f7';
+            this.canvasCtx = this.canvas.getContext("2d");
+            this.canvasCtx.fillStyle = "#f7f7f7";
             this.canvasCtx.fill();
             Runner.updateCanvasScaling(this.canvas);
 
@@ -395,7 +395,7 @@
          * Create the touch controller. A div that covers whole screen.
          */
         createTouchController: function () {
-            this.touchController = document.createElement('div');
+            this.touchController = document.createElement("div");
             this.touchController.className = Runner.classes.TOUCH_CONTROLLER;
             this.outerContainerEl.appendChild(this.touchController);
         },
@@ -437,8 +437,8 @@
 
                 // Outer container and distance meter.
                 if (this.playing || this.crashed || this.paused) {
-                    this.containerEl.style.width = this.dimensions.WIDTH + 'px';
-                    this.containerEl.style.height = this.dimensions.HEIGHT + 'px';
+                    this.containerEl.style.width = this.dimensions.WIDTH + "px";
+                    this.containerEl.style.height = this.dimensions.HEIGHT + "px";
                     this.distanceMeter.update(0, Math.ceil(this.distanceRan));
                     this.stop();
                 } else {
@@ -463,22 +463,22 @@
                 this.tRex.playingIntro = true;
 
                 // CSS animation definition.
-                var keyframes = '@-webkit-keyframes intro { ' +
-                    'from { width:' + Trex.config.WIDTH + 'px }' +
-                    'to { width: ' + this.dimensions.WIDTH + 'px }' +
-                    '}';
-                
+                var keyframes = "@-webkit-keyframes intro { " +
+                    "from { width:" + Trex.config.WIDTH + "px }" +
+                    "to { width: " + this.dimensions.WIDTH + "px }" +
+                    "}";
+
                 // create a style sheet to put the keyframe rule in 
                 // and then place the style sheet in the html head    
-                var sheet = document.createElement('style');
+                var sheet = document.createElement("style");
                 sheet.innerHTML = keyframes;
                 document.head.appendChild(sheet);
 
                 this.containerEl.addEventListener(Runner.events.ANIM_END,
                     this.startGame.bind(this));
 
-                this.containerEl.style.webkitAnimation = 'intro .4s ease-out 1 both';
-                this.containerEl.style.width = this.dimensions.WIDTH + 'px';
+                this.containerEl.style.webkitAnimation = "intro .4s ease-out 1 both";
+                this.containerEl.style.width = this.dimensions.WIDTH + "px";
 
                 // if (this.touchController) {
                 //     this.outerContainerEl.appendChild(this.touchController);
@@ -498,7 +498,7 @@
             this.runningTime = 0;
             this.playingIntro = false;
             this.tRex.playingIntro = false;
-            this.containerEl.style.webkitAnimation = '';
+            this.containerEl.style.webkitAnimation = "";
             this.playCount++;
 
             // Handle tabbing off the page. Pause the current game.
@@ -839,8 +839,8 @@
          * Pause the game if the tab is not in focus.
          */
         onVisibilityChange: function (e) {
-            if (document.hidden || document.webkitHidden || e.type == 'blur' ||
-                document.visibilityState != 'visible') {
+            if (document.hidden || document.webkitHidden || e.type == "blur" ||
+                document.visibilityState != "visible") {
                 this.stop();
             } else if (!this.crashed) {
                 this.tRex.reset();
@@ -892,7 +892,7 @@
      * @return {boolean} Whether the canvas was scaled.
      */
     Runner.updateCanvasScaling = function (canvas, opt_width, opt_height) {
-        var context = canvas.getContext('2d');
+        var context = canvas.getContext("2d");
 
         // Query the various pixel ratios
         var devicePixelRatio = Math.floor(window.devicePixelRatio) || 1;
@@ -907,8 +907,8 @@
             canvas.width = oldWidth * ratio;
             canvas.height = oldHeight * ratio;
 
-            canvas.style.width = oldWidth + 'px';
-            canvas.style.height = oldHeight + 'px';
+            canvas.style.width = oldWidth + "px";
+            canvas.style.height = oldHeight + "px";
 
             // Scale the context to counter the fact that we've manually scaled
             // our canvas element.
@@ -917,8 +917,8 @@
         } else if (devicePixelRatio == 1) {
             // Reset the canvas width / height. Fixes scaling bug when the page is
             // zoomed and the devicePixelRatio changes accordingly.
-            canvas.style.width = canvas.width + 'px';
-            canvas.style.height = canvas.height + 'px';
+            canvas.style.width = canvas.width + "px";
+            canvas.style.height = canvas.height + "px";
         }
         return false;
     };
@@ -955,8 +955,8 @@
      * @return {HTMLCanvasElement}
      */
     function createCanvas(container, width, height, opt_classname) {
-        var canvas = document.createElement('canvas');
-        canvas.className = opt_classname ? Runner.classes.CANVAS + ' ' +
+        var canvas = document.createElement("canvas");
+        canvas.className = opt_classname ? Runner.classes.CANVAS + " " +
             opt_classname : Runner.classes.CANVAS;
         canvas.width = width;
         canvas.height = height;
@@ -1005,7 +1005,7 @@
      */
     function GameOverPanel(canvas, textImgPos, restartImgPos, dimensions) {
         this.canvas = canvas;
-        this.canvasCtx = canvas.getContext('2d');
+        this.canvasCtx = canvas.getContext("2d");
         this.canvasDimensions = dimensions;
         this.textImgPos = textImgPos;
         this.restartImgPos = restartImgPos;
@@ -1174,10 +1174,10 @@
      */
     function drawCollisionBoxes(canvasCtx, tRexBox, obstacleBox) {
         canvasCtx.save();
-        canvasCtx.strokeStyle = '#f00';
+        canvasCtx.strokeStyle = "#f00";
         canvasCtx.strokeRect(tRexBox.x, tRexBox.y, tRexBox.width, tRexBox.height);
 
-        canvasCtx.strokeStyle = '#0f0';
+        canvasCtx.strokeStyle = "#0f0";
         canvasCtx.strokeRect(obstacleBox.x, obstacleBox.y,
             obstacleBox.width, obstacleBox.height);
         canvasCtx.restore();
@@ -1430,7 +1430,7 @@
      */
     Obstacle.types = [
         {
-            type: 'CACTUS_SMALL',
+            type: "CACTUS_SMALL",
             width: 17,
             height: 35,
             yPos: 105,
@@ -1444,7 +1444,7 @@
             ]
         },
         {
-            type: 'CACTUS_LARGE',
+            type: "CACTUS_LARGE",
             width: 25,
             height: 50,
             yPos: 90,
@@ -1458,7 +1458,7 @@
             ]
         },
         {
-            type: 'PTERODACTYL',
+            type: "PTERODACTYL",
             width: 46,
             height: 40,
             yPos: [100, 75, 50], // Variable height.
@@ -1489,7 +1489,7 @@
      */
     function Trex(canvas, spritePos) {
         this.canvas = canvas;
-        this.canvasCtx = canvas.getContext('2d');
+        this.canvasCtx = canvas.getContext("2d");
         this.spritePos = spritePos;
         this.xPos = 0;
         this.yPos = 0;
@@ -1563,11 +1563,11 @@
      * @enum {string}
      */
     Trex.status = {
-        CRASHED: 'CRASHED',
-        DUCKING: 'DUCKING',
-        JUMPING: 'JUMPING',
-        RUNNING: 'RUNNING',
-        WAITING: 'WAITING'
+        CRASHED: "CRASHED",
+        DUCKING: "DUCKING",
+        JUMPING: "JUMPING",
+        RUNNING: "RUNNING",
+        WAITING: "WAITING"
     };
 
     /**
@@ -1855,7 +1855,7 @@
      */
     function DistanceMeter(canvas, spritePos, canvasWidth) {
         this.canvas = canvas;
-        this.canvasCtx = canvas.getContext('2d');
+        this.canvasCtx = canvas.getContext("2d");
         this.image = Runner.imageSprite;
         this.spritePos = spritePos;
         this.x = 0;
@@ -1868,7 +1868,7 @@
 
         this.digits = [];
         this.acheivement = false;
-        this.defaultString = '';
+        this.defaultString = "";
         this.flashTimer = 0;
         this.flashIterations = 0;
         this.invertTrigger = false;
@@ -1925,14 +1925,14 @@
          * @param {number} width Canvas width in px.
          */
         init: function (width) {
-            var maxDistanceStr = '';
+            var maxDistanceStr = "";
 
             this.calcXPos(width);
             this.maxScore = this.maxScoreUnits;
             for (var i = 0; i < this.maxScoreUnits; i++) {
                 this.draw(i, 0);
-                this.defaultString += '0';
-                maxDistanceStr += '9';
+                this.defaultString += "0";
+                maxDistanceStr += "9";
             }
 
             this.maxScore = parseInt(maxDistanceStr);
@@ -2019,7 +2019,7 @@
                 if (distance > this.maxScore && this.maxScoreUnits ==
                     this.config.MAX_DISTANCE_UNITS) {
                     this.maxScoreUnits++;
-                    this.maxScore = parseInt(this.maxScore + '9');
+                    this.maxScore = parseInt(this.maxScore + "9");
                 } else {
                     this.distance = 0;
                 }
@@ -2036,9 +2036,9 @@
                     // Create a string representation of the distance with leading 0.
                     var distanceStr = (this.defaultString +
                         distance).substr(-this.maxScoreUnits);
-                    this.digits = distanceStr.split('');
+                    this.digits = distanceStr.split("");
                 } else {
-                    this.digits = this.defaultString.split('');
+                    this.digits = this.defaultString.split("");
                 }
             } else {
                 // Control flashing of the score on reaching acheivement.
@@ -2092,7 +2092,7 @@
             var highScoreStr = (this.defaultString +
                 distance).substr(-this.maxScoreUnits);
 
-            this.highScore = ['10', '11', ''].concat(highScoreStr.split(''));
+            this.highScore = ["10", "11", ""].concat(highScoreStr.split(""));
         },
 
         /**
@@ -2116,7 +2116,7 @@
      */
     function Cloud(canvas, spritePos, containerWidth) {
         this.canvas = canvas;
-        this.canvasCtx = this.canvas.getContext('2d');
+        this.canvasCtx = this.canvas.getContext("2d");
         this.spritePos = spritePos;
         this.containerWidth = containerWidth;
         this.xPos = containerWidth;
@@ -2209,7 +2209,7 @@
     function NightMode(canvas, spritePos, containerWidth) {
         this.spritePos = spritePos;
         this.canvas = canvas;
-        this.canvasCtx = canvas.getContext('2d');
+        this.canvasCtx = canvas.getContext("2d");
         this.xPos = containerWidth - 50;
         this.yPos = 30;
         this.currentPhase = 0;
@@ -2369,7 +2369,7 @@
     function HorizonLine(canvas, spritePos) {
         this.spritePos = spritePos;
         this.canvas = canvas;
-        this.canvasCtx = canvas.getContext('2d');
+        this.canvasCtx = canvas.getContext("2d");
         this.sourceDimensions = {};
         this.dimensions = HorizonLine.dimensions;
         this.sourceXPos = [this.spritePos.x, this.spritePos.x +
@@ -2402,7 +2402,7 @@
 
             for (var dimension in HorizonLine.dimensions) {
                 if (IS_HIDPI) {
-                    if (dimension != 'YPOS') {
+                    if (dimension != "YPOS") {
                         this.sourceDimensions[dimension] =
                             HorizonLine.dimensions[dimension] * 2;
                     }
@@ -2498,7 +2498,7 @@
      */
     function Horizon(canvas, spritePos, dimensions, gapCoefficient) {
         this.canvas = canvas;
-        this.canvasCtx = this.canvas.getContext('2d');
+        this.canvasCtx = this.canvas.getContext("2d");
         this.config = Horizon.config;
         this.dimensions = dimensions;
         this.gapCoefficient = gapCoefficient;
@@ -2709,7 +2709,7 @@
 
 
 function onDocumentLoad() {
-    new Runner('.interstitial-wrapper');
+    new Runner(".interstitial-wrapper");
 }
 
-document.addEventListener('DOMContentLoaded', onDocumentLoad);
+document.addEventListener("DOMContentLoaded", onDocumentLoad);
