@@ -76,8 +76,25 @@
         var find = $(this).data("name");
         var name = $(find).val().trim();
         var img = $(this).data("image")
-        $.post("/api/Dinos", { name: name, img: img, UserId: 4 }).then(function () {
-            console.log(find, name);
-        })
+        $.post("/api/Dinos", { name: name, img: img, UserId: 4 })
+            .then(function () {
+                var newCoinAmount = $("#currency").text() - 100;
+                var body = { dinoCoins: newCoinAmount };
+
+
+
+                if (newCoinAmount >= 0) {
+                    $.ajax({
+                        url: "/api/users",
+                        type: 'PUT',
+                        data: body,
+                    }).then(function (data) {
+                        window.location.replace("/");
+                    });
+                } else {
+                    alert("Insufficient Funds")
+                }
+
+            })
     })
 </script>
